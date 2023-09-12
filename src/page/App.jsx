@@ -24,10 +24,6 @@ function App() {
           <TableDeJeu pion={pion} setPion={setPion} pionWinner={pionWinner} setPionWinner={setPionWinner} />
         </div>
       </div>
-      <div className="col-12 p-5 pt-0  d-flex justify-content-between">
-        <button className="btn btn-outline-danger"> Reprendre </button>
-        <button className="btn btn-success" onClick={() => setPionWinner("X")}> Résultat </button>
-      </div>
     </div>
 
   );

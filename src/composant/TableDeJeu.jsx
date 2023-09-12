@@ -23,7 +23,58 @@ function TableDeJeu(props) {
         setValeurPlace7("");
         setValeurPlace8("");
         setValeurPlace9("");
-    }, [])
+    }, []);
+
+    function reset() {
+        setValeurPlace1("");
+        setValeurPlace2("");
+        setValeurPlace3("");
+        setValeurPlace4("");
+        setValeurPlace5("");
+        setValeurPlace6("");
+        setValeurPlace7("");
+        setValeurPlace8("");
+        setValeurPlace9("");
+        props.setPionWinner("");
+    };
+
+    function result() {
+        
+        var nb_gagnant = 0;
+
+        if (valeurPlace1 === valeurPlace2 && valeurPlace2 === valeurPlace3) {
+            nb_gagnant++;
+            return valeurPlace1;
+        } else if(valeurPlace4 === valeurPlace5 && valeurPlace5 === valeurPlace6){
+            nb_gagnant++;
+            return valeurPlace4;
+        } else if(valeurPlace7 === valeurPlace8 && valeurPlace8 === valeurPlace9){
+            nb_gagnant++;
+            return valeurPlace7;
+        } else if(valeurPlace1 === valeurPlace4 && valeurPlace4 === valeurPlace7){
+            nb_gagnant++;
+            return valeurPlace1;
+        } else if(valeurPlace2 === valeurPlace5 && valeurPlace5 === valeurPlace8){
+            nb_gagnant++;
+            return valeurPlace2;
+        } else if(valeurPlace3 === valeurPlace6 && valeurPlace6 === valeurPlace9){
+            nb_gagnant++;
+            return valeurPlace3;
+        } else if(valeurPlace1 === valeurPlace5 && valeurPlace5 === valeurPlace9){
+            nb_gagnant++;
+            return valeurPlace1;
+        } else if(valeurPlace3 === valeurPlace5 && valeurPlace5 === valeurPlace7){
+            nb_gagnant++;
+            return valeurPlace3;
+        } else {
+            return "Null"
+        }
+
+        if (nb_gagnant >= 2) {
+            return "Match Null";
+        }
+
+    }
 
     return (
         <div className="container p-2 card">
@@ -33,7 +84,7 @@ function TableDeJeu(props) {
                         props.setPion("O") & setValeurPlace1("O")
                         :
                         props.setPion("X") & setValeurPlace1("X")
-                    }                    
+                    }
                 >
                     {valeurPlace1}
                 </div>
@@ -114,26 +165,10 @@ function TableDeJeu(props) {
                     {valeurPlace9}
                 </div>
             </div>
-            {
-                props.setPionWinner(valeurPlace1)
-                // if (valeurPlace1 === valeurPlace2 === valeurPlace3) {
-                //     
-                // }else if(valeurPlace4 === valeurPlace5 === valeurPlace6){
-                //     props.setPionWinner(valeurPlace4);
-                // }else if(valeurPlace7 === valeurPlace8 === valeurPlace9){
-                //     props.setPionWinner(valeurPlace7);
-                // }else if(valeurPlace1 === valeurPlace4 === valeurPlace7){
-                //     props.setPionWinner(valeurPlace1);
-                // }else if(valeurPlace2 === valeurPlace5 === valeurPlace8){
-                //     props.setPionWinner(valeurPlace2);
-                // }else if(valeurPlace3 === valeurPlace6 === valeurPlace9){
-                //     props.setPionWinner(valeurPlace3);
-                // }else if(valeurPlace1 === valeurPlace5 === valeurPlace9){
-                //     props.setPionWinner(valeurPlace1);
-                // }else if(valeurPlace3 === valeurPlace5 === valeurPlace7){
-                //     props.setPionWinner(valeurPlace3);
-                // }
-            }
+            <div className="col-12 pt-0  d-flex justify-content-between">
+                <button className="btn btn-danger" onClick={() => reset()}> Reprendre </button>
+                <button className="btn btn-success" onClick={() => props.setPionWinner(result())}> Résultat </button>
+            </div>
         </div>
     );
 }
