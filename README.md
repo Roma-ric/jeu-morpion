@@ -8,7 +8,7 @@
     git clone https://github.com/Roma-ric/jeu-morpion.git
 
 
-## Ouvrir le dossier de l'application cloner puis copier son contenu
+## Ouvrir le dossier de l'application clonée puis copier son contenu
 
 
 ## Créer une application React avec Create React Application 
@@ -19,7 +19,7 @@
 
     cd jeu/
 
-## Coler dans le dossier les fichiers copiés
+## Coller dans le dossier les fichiers copiés
 
 ## Démarrer l'application 
 
